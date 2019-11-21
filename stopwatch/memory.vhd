@@ -65,7 +65,7 @@ begin
 				
 				ReadEnd <= '0';
 			else
-				if (ReadEn = '1') then
+				if (ReadEn = '1' and WriteEn = '0') then
 					if ((ReadPtr <= ReadPtrMax) and (ReadPtrMax > -1)) then
 						DataOut <= Memory(ReadPtr);
 						ReadPtr := ReadPtr + 1;
@@ -77,7 +77,7 @@ begin
 					end if;
 				end if;
 				
-				if (WriteEn = '1') then
+				if (WriteEn = '1' and ReadEn = '0') then
 						for ptr in FIFO_DEPTH - 2 downto 0 loop
 							Memory(ptr + 1) := Memory(ptr);
 						end loop;
