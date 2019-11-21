@@ -64,7 +64,7 @@ ARCHITECTURE behavior OF memory_tb IS
    --Inputs
    signal CLK : std_logic := '0';
    signal RST : std_logic := '0';
-   signal WriteEn : std_logic := '0';
+   signal WriteEn : std_logic := '1';
    signal DataIn : std_logic_vector(DATA_WIDTH - 1 downto 0) := (others => '0');
    signal ReadEn : std_logic := '0';
 
@@ -93,7 +93,7 @@ BEGIN
           Empty => Empty
         );
 		  
-  simulate: process
+  write_sim: process
 	begin	
 		wait for 2 * clock_period;
 		for i in DataIn'length-2 downto 0 loop
@@ -104,6 +104,4 @@ BEGIN
 	
 	CLK <= not CLK after clock_period;
 	x <= not x after 64 * clock_period;
-	WriteEn <= not WriteEn after clock_period;
-	ReadEn <= not ReadEn after clock_period;
 END;

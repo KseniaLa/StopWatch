@@ -1,10 +1,10 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/GitHub/StopWatch/stopwatch/memory_tb_isim_beh.exe -prj C:/GitHub/StopWatch/stopwatch/memory_tb_beh.prj memory_tb 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o D:/github/POCP/StopWatch/stopwatch/memory_tb_isim_beh.exe -prj D:/github/POCP/StopWatch/stopwatch/memory_tb_beh.prj work.memory_tb 
 ISim P.20131013 (signature 0x7708f090)
-Number of CPUs detected in this system: 4
-Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Parsing VHDL file "C:/GitHub/StopWatch/stopwatch/memory.vhd" into library work
-Parsing VHDL file "C:/GitHub/StopWatch/stopwatch/memory_tb.vhd" into library work
+Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/memory.vhd" into library work
+Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/memory_tb.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
@@ -12,9 +12,7 @@ Compiling package std_logic_1164
 Compiling architecture behavioral of entity memory [memory_default]
 Compiling architecture behavior of entity memory_tb
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: Системе не удается найти указанный путь, "isim\memory_tb_isim_beh.exe.sim\libPortability.dll".
 Compiled 5 VHDL Units
-Built simulation executable C:/GitHub/StopWatch/stopwatch/memory_tb_isim_beh.exe
-Fuse Memory Usage: 29716 KB
-Fuse CPU Usage: 437 ms
+Built simulation executable D:/github/POCP/StopWatch/stopwatch/memory_tb_isim_beh.exe
+Fuse Memory Usage: 29652 KB
+Fuse CPU Usage: 312 ms

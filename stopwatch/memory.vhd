@@ -47,31 +47,31 @@ entity memory is
 end memory;
 
 architecture Behavioral of memory is
+type FIFO_Memory is array (0 to FIFO_DEPTH - 1) of STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		signal Memory : FIFO_Memory := (others => (others => '0'));
+		
+		signal ReadPtr : integer range -1 to FIFO_DEPTH - 1;
+		signal WritePtr : natural range 0 to FIFO_DEPTH - 1;
+		signal ReadPtrMax : integer range -1 to FIFO_DEPTH - 1;
 
 begin
 	fifo_proc : process (CLK)
-		type FIFO_Memory is array (0 to FIFO_DEPTH - 1) of STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
-		variable Memory : FIFO_Memory;
-		
-		variable ReadPtr : integer range -1 to FIFO_DEPTH - 1;
-		variable WritePtr : natural range 0 to FIFO_DEPTH - 1;
-		variable ReadPtrMax : integer range -1 to FIFO_DEPTH - 1;
-	begin
+			begin
 		if rising_edge(CLK) then
 			if RST = '1' then
-				ReadPtr := -1;
-				ReadPtrMax := -1;
-				WritePtr := 0;
+				ReadPtr <= -1;
+				ReadPtrMax <= -1;
+				WritePtr <= 0;
 				
 				ReadEnd <= '0';
 			else
 				if (ReadEn = '1' and WriteEn = '0') then
 					if ((ReadPtr <= ReadPtrMax) and (ReadPtrMax > -1)) then
 						DataOut <= Memory(ReadPtr);
-						ReadPtr := ReadPtr + 1;
+						ReadPtr <= ReadPtr + 1;
 					else
 						if (ReadPtr > 0) then
-							ReadPtr := 0;
+							ReadPtr <= 0;
 						end if;
 						ReadEnd <= '1';
 					end if;
@@ -79,12 +79,12 @@ begin
 				
 				if (WriteEn = '1' and ReadEn = '0') then
 						for ptr in FIFO_DEPTH - 2 downto 0 loop
-							Memory(ptr + 1) := Memory(ptr);
+							Memory(ptr + 1) <= Memory(ptr);
 						end loop;
 
-						Memory(WritePtr) := DataIn;
+						Memory(WritePtr) <= DataIn;
 						if (ReadPtrMax < FIFO_DEPTH - 1) then
-							ReadPtrMax := ReadPtrMax + 1;
+							ReadPtrMax <= ReadPtrMax + 1;
 						end if;
 				end if;
 			end if;
