@@ -55,22 +55,25 @@ begin
 		
 		variable ReadPtr : integer range -1 to FIFO_DEPTH - 1;
 		variable WritePtr : natural range 0 to FIFO_DEPTH - 1;
+		variable ReadPtrMax : integer range -1 to FIFO_DEPTH - 1;
 	begin
 		if rising_edge(CLK) then
 			if RST = '1' then
-				ReadPtr := FIFO_DEPTH - 1;
+				ReadPtr := -1;
+				ReadPtrMax := -1;
 				WritePtr := 0;
 				
 				ReadEnd <= '0';
 			else
 				if (ReadEn = '1') then
-					DataOut <= Memory(ReadPtr);
-					
-					if (ReadPtr = 0) then
-						ReadPtr := FIFO_DEPTH - 1;
-						ReadEnd <= '1';
+					if ((ReadPtr <= ReadPtrMax) and (ReadPtrMax > -1)) then
+						DataOut <= Memory(ReadPtr);
+						ReadPtr := ReadPtr + 1;
 					else
-						ReadPtr := ReadPtr - 1;
+						if (ReadPtr > 0) then
+							ReadPtr := 0;
+						end if;
+						ReadEnd <= '1';
 					end if;
 				end if;
 				
@@ -80,9 +83,10 @@ begin
 						end loop;
 
 						Memory(WritePtr) := DataIn;
-						ReadPtr := FIFO_DEPTH - 1;
+						if (ReadPtrMax < FIFO_DEPTH - 1) then
+							ReadPtrMax := ReadPtrMax + 1;
+						end if;
 				end if;
-				
 			end if;
 		end if;
 	end process;
