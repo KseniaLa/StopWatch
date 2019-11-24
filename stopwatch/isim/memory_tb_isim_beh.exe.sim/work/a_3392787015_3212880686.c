@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/github/POCP/StopWatch/stopwatch/memory.vhd";
+static const char *ng0 = "C:/GitHub/StopWatch/stopwatch/memory.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_1744673427_503743352(char *, char *, unsigned int , unsigned int );
@@ -247,9 +247,9 @@ LAB20:    xsi_set_current_line(74, ng0);
 
 LAB23:    xsi_set_current_line(81, ng0);
     t7 = (8 - 2);
-    t1 = (t0 + 8216);
+    t1 = (t0 + 8132);
     *((int *)t1) = t7;
-    t8 = (t0 + 8220);
+    t8 = (t0 + 8136);
     *((int *)t8) = 0;
     t15 = t7;
     t17 = 0;
@@ -296,7 +296,7 @@ LAB26:    t1 = (t0 + 1672U);
 LAB30:    xsi_set_current_line(82, ng0);
     t9 = (t0 + 2312U);
     t10 = *((char **)t9);
-    t9 = (t0 + 8216);
+    t9 = (t0 + 8132);
     t18 = *((int *)t9);
     t21 = (t18 - 0);
     t23 = (t21 * 1);
@@ -304,7 +304,7 @@ LAB30:    xsi_set_current_line(82, ng0);
     t24 = (32U * t23);
     t25 = (0 + t24);
     t11 = (t10 + t25);
-    t20 = (t0 + 8216);
+    t20 = (t0 + 8132);
     t22 = *((int *)t20);
     t31 = (t22 + 1);
     t32 = (t31 - 0);
@@ -319,16 +319,16 @@ LAB30:    xsi_set_current_line(82, ng0);
     memcpy(t30, t11, 32U);
     xsi_driver_first_trans_delta(t26, t35, 32U, 0LL);
 
-LAB31:    t1 = (t0 + 8216);
+LAB31:    t1 = (t0 + 8132);
     t15 = *((int *)t1);
-    t3 = (t0 + 8220);
+    t3 = (t0 + 8136);
     t17 = *((int *)t3);
     if (t15 == t17)
         goto LAB32;
 
 LAB33:    t7 = (t15 + -1);
     t15 = t7;
-    t4 = (t0 + 8216);
+    t4 = (t0 + 8132);
     *((int *)t4) = t15;
     goto LAB29;
 
