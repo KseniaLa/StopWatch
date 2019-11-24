@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Mon Nov 25 01:38:20 2019
+# Process ID: 9436
+# Log file: D:/github/POCP/StopWatch/stopwatch/planAhead_run_2/planAhead.log
+# Journal file: D:/github/POCP/StopWatch/stopwatch/planAhead_run_2/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source D:/github/POCP/StopWatch/stopwatch/pa.fromNetlist.tcl

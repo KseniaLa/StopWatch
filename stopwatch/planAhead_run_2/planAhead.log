@@ -1,0 +1,52 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Mon Nov 25 01:38:20 2019
+# Process ID: 9436
+# Log file: D:/github/POCP/StopWatch/stopwatch/planAhead_run_2/planAhead.log
+# Journal file: D:/github/POCP/StopWatch/stopwatch/planAhead_run_2/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source D:/github/POCP/StopWatch/stopwatch/pa.fromNetlist.tcl
+# create_project -name stopwatch -dir "D:/github/POCP/StopWatch/stopwatch/planAhead_run_2" -part xc6slx9ftg256-3
+# set_property design_mode GateLvl [get_property srcset [current_run -impl]]
+# set_property edif_top_file "D:/github/POCP/StopWatch/stopwatch/stopwatch7seg.ngc" [ get_property srcset [ current_run ] ]
+# add_files -norecurse { {D:/github/POCP/StopWatch/stopwatch} }
+# set_property target_constrs_file "stopwatch7seg_map.ucf" [current_fileset -constrset]
+Adding file 'D:/github/POCP/StopWatch/stopwatch/stopwatch7seg_map.ucf' to fileset 'constrs_1'
+# add_files [list {stopwatch7seg_map.ucf}] -fileset [get_property constrset [current_run]]
+# link_design
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+Design is defaulting to project part: xc6slx9ftg256-3
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design stopwatch7seg.ngc ...
+WARNING:NetListWriters:298 - No output is written to stopwatch7seg.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file stopwatch7seg.edif ...
+ngc2edif: Total memory usage is 4310804 kilobytes
+
+Parsing EDIF File [./planAhead_run_2/stopwatch.data/cache/stopwatch7seg_ngc_zx.edif]
+INFO: [Common 17-344] 'link_design' was cancelled
+INFO: [Common 17-344] 'source' was cancelled
+exit
+ERROR: [PlanAhead 12-106] *** Exception: ui.h.b: Found deleted key in HTclEventBroker. Verify if the classes listed here call cleanup()
+HTclEvent: SIGNAL_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_PORT_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: SIGNAL_BUS_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_CORE_CONFIG_CHANGE   Classes: ui.views.aR 
+ (See D:/github/POCP/StopWatch/stopwatch\planAhead_pid9436.debug)
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Mon Nov 25 01:38:32 2019...
+INFO: [Common 17-83] Releasing license: PlanAhead

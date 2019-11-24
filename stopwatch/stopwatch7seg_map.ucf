@@ -2,7 +2,7 @@ NET "CLK" CLOCK_DEDICATED_ROUTE = FALSE;
 
 NET "CLK" LOC = R3;
 NET "RST" LOC = T16;
-NET "button" LOC = R10;
+NET "start_stop_button" LOC = R10;
 
 NET "anode[7]" LOC = M1;
 NET "anode[6]" LOC = L1;
@@ -42,4 +42,4 @@ NET "cathode[0]" IOSTANDARD = LVCMOS18;
 
 NET "CLK" IOSTANDARD = LVCMOS18;
 NET "RST" IOSTANDARD = LVCMOS18;
-NET "button" IOSTANDARD = LVCMOS18;
+NET "start_stop_button" IOSTANDARD = LVCMOS18;
