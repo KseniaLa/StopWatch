@@ -74,6 +74,7 @@ BEGIN
 	);
 	
 	CLK <= not CLK after 1 ns;
-	start_stop_button <= not start_stop_button after 100000000 * CLK_period;
+	
+	
 
 END;
