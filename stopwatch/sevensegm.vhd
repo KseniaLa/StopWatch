@@ -162,24 +162,42 @@ led : process (clock_480) --tells leds when to turn on
 	begin
 		if (rising_edge(clock_480)) then
 			case (digit1) is
+--				when "000" =>
+--					anode <= "01111111";
+--				when "001" =>
+--					anode <= "10111111";
+--				when "010" =>
+--					anode <= "11011111";
+--				when "011" =>
+--					anode <= "11101111";
+--				when "100" =>
+--					anode <= "11110111";
+--				when "101" =>
+--					anode <= "11111011";
+--				when "110" =>
+--					anode <= "11111101";
+--				when "111" =>
+--					anode <= "11111110";
+--				when others =>
+--					anode <= "11111111";
 				when "000" =>
-					anode <= "01111111";
+					anode <= "10000000";
 				when "001" =>
-					anode <= "10111111";
+					anode <= "01000000";
 				when "010" =>
-					anode <= "11011111";
+					anode <= "00100000";
 				when "011" =>
-					anode <= "11101111";
+					anode <= "00010000";
 				when "100" =>
-					anode <= "11110111";
+					anode <= "00001000";
 				when "101" =>
-					anode <= "11111011";
+					anode <= "00000100";
 				when "110" =>
-					anode <= "11111101";
+					anode <= "00000010";
 				when "111" =>
-					anode <= "11111110";
+					anode <= "00000001";
 				when others =>
-						cathode <= "11111111";
+					anode <= "00000000";
 			end case;
 			
 			case (digit2) is

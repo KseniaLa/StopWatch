@@ -38,36 +38,38 @@ end timer_clocks;
 
 architecture Behavioral of timer_clocks is
 
-signal clk1, clk2 : STD_LOGIC;
+signal clk1, clk2 : STD_LOGIC := '0';
+signal count1 : std_logic_vector(17 downto 0):="000000000000000000";
+signal count2 : std_logic_vector (18 downto 0):="0000000000000000000";
 
 begin
 
-clk_480hz : process (CLK) --clock that runs at 480Hz to keep all the leds on
-	variable count1 : unsigned (17 downto 0):="000000000000000000";
+clk_480hz : process (CLK) 
+	
 	begin
 		if (rising_edge(CLK)) then
-			if count1 = "110010110111001101" then --counting to 208333
+			if count1 = "110010110111001101" then 
 				clk1 <= not clk1;
-				count1 := "000000000000000000";
+				count1 <= "000000000000000000";
 			end if;
-			count1 := count1 + 1;
+			count1 <= std_logic_vector( unsigned(count1) + 1 );
 		end if;
 	end process;
 	
-clk_centi : process (CLK) --clock that runs at 0.5MHz to count in centiseconds
-	variable count2 : unsigned (18 downto 0):="0000000000000000000";
+clk_centi : process (CLK) 
+	
 	begin
 		if (rising_edge(CLK)) then
-			if count2 = "1111010000100100000" then --counting to 500000
+			if count2 = "1111010000100100000" then 
 				clk2 <= not clk2;
-				count2 := "0000000000000000000";
+				count2 <= "0000000000000000000";
 			end if;
-			count2 := count2 + 1;
+			count2 <= std_logic_vector( unsigned(count2) + 1 );
 		end if;
 	end process;
 
-clock_480 <= clk1; --setting this clock to a signal to make input for display module
-clock_centi <= clk2; --setting this clock to a signal to make input for display module
+clock_480 <= clk1;
+clock_centi <= clk2; 
 
 end Behavioral;
 
