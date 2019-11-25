@@ -74,7 +74,7 @@ BEGIN
 	);
 	
 	CLK <= not CLK after 1 ns;
-	
+	start_stop_button <= '1' after 1 ns when start_stop_button = '0' else '0' after 1 ns;
 	
 
 END;

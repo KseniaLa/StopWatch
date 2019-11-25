@@ -86,34 +86,40 @@ adding : process (start_stop_button, RST, PS, NS, ss1, ss2)
 				if ss2 = '0' and ss1 = '1' then
 					en <= not en;
 				end if;
+
+--				if start_stop_button = '1' then
+--					en <= not en;
+--				elsif start_stop_button = '0' then
+--					en <= en;
+--				end if;
 				
 				case (PS) is
 					when "11" => 
 						if en = '1' then
 							NS <= "11";
 							ms1 <= ms1 + 1;
-							if ms1 = 10 then
+							if ms1 = 9 then
 								ms2 <= ms2 + 1;
 								ms1 <= 0;
-								if ms2 = 10 then
+								if ms2 = 9 then
 									s1 <= s1 + 1;
 									ms2 <= 0;
-									if s1 = 10 then
+									if s1 = 9 then
 										s2 <= s2 + 1;
 										s1 <= 0;
-										if s2 = 6 then 
+										if s2 = 5 then 
 											m1 <= m1 + 1;
 											s2 <= 0;
-											if m1 = 10 then
+											if m1 = 9 then
 												m2 <= m2 + 1;
 												m1 <= 0;
-												if m2 = 6 then
+												if m2 = 5 then
 													h1 <= h1 + 1;
 													m2 <= 0;
-													if h1 = 10 then
+													if h1 = 9 then
 														h2 <= h2 +1;
 														h1 <= 0;
-														if h2 = 10 then
+														if h2 = 9 then
 															h1 <= 0;
 															h2 <= 0;
 															m1 <= 0;
