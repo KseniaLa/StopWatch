@@ -42,8 +42,8 @@ end vga;
 
 architecture Behavioral of vga is
 signal clk25 : std_logic; --need to set 0????????
-signal hs : std_logic_vector (9 downto 0);
-signal vs : std_logic_vector (9 downto 0);
+signal hs : std_logic_vector (9 downto 0) := "0000000000";
+signal vs : std_logic_vector (9 downto 0) := "0000000000";
 begin
 	process (CLK)
 	begin
@@ -63,14 +63,14 @@ begin
 			green <= '1';
 			blue <= '0';
 			
-			if (hs > "0000000000" ) and (hs < "0001100001" ) -- 96+1
+			if ((hs > "0000000000" ) and (hs < "0001100001" )) -- 96+1
 			then
 				hsync <= '0';
 			else
 				hsync <= '1';
 			end if;
 
-			if (vs > "0000000000" ) and (vs < "0000000011" ) -- 2+1   
+			if ((vs > "0000000000" ) and (vs < "0000000011" )) -- 2+1   
 			then
 				vsync <= '0';
 			else

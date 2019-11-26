@@ -1,0 +1,9 @@
+NET "CLK" CLOCK_DEDICATED_ROUTE = FALSE;
+
+NET CLK                       		    	LOC = P16 | IOSTANDARD = "LVCMOS33";        
+
+NET hsync	                        		LOC = P95 | IOSTANDARD = "LVCMOS33";       
+NET vsync 	                      	        	LOC = P97 | IOSTANDARD = "LVCMOS33";       
+NET red                                  		LOC = P100 | IOSTANDARD = "LVCMOS33";       
+NET green                                 		LOC = P99 | IOSTANDARD = "LVCMOS33";       
+NET blue                                  		LOC = P98 | IOSTANDARD = "LVCMOS33";
