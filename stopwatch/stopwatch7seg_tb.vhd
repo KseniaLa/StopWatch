@@ -51,7 +51,7 @@ ARCHITECTURE behavior OF stopwatch7seg_tb IS
     
 
    --Inputs
-   signal start_stop_button : std_logic := '0';
+   signal start_stop_button : std_logic := '1';
    signal CLK : std_logic := '0';
    signal RST : std_logic := '0';
 
@@ -73,8 +73,8 @@ BEGIN
       cathode
 	);
 	
-	CLK <= not CLK after 1 ns;
-	start_stop_button <= '1' after 1 ns when start_stop_button = '0' else '0' after 1 ns;
+	CLK <= not CLK after 10 ns;
+	start_stop_button <= '1' after 10 ns when start_stop_button = '0' else '0' after 10 ns;
 	
 
 END;

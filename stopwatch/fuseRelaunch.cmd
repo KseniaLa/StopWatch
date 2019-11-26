@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "D:/github/POCP/StopWatch/stopwatch/stopwatch7seg_tb_isim_beh.exe" -prj "D:/github/POCP/StopWatch/stopwatch/stopwatch7seg_tb_beh.prj" "stopwatch7seg_tb" 
+-intstyle "ise" -incremental -lib "secureip" -o "D:/github/POCP/StopWatch/stopwatch/timer_const_tb_isim_beh.exe" -prj "D:/github/POCP/StopWatch/stopwatch/timer_const_tb_beh.prj" "work.timer_const_tb" 

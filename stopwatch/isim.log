@@ -1,5 +1,5 @@
 ISim log file
-Running: D:\github\POCP\StopWatch\stopwatch\stopwatch7seg_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb D:/github/POCP/StopWatch/stopwatch/stopwatch7seg_tb_isim_beh.wdb 
+Running: D:\github\POCP\StopWatch\stopwatch\timer_const_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb D:/github/POCP/StopWatch/stopwatch/timer_const_tb_isim_beh.wdb 
 ISim P.20131013 (signature 0x7708f090)
 This is a Full version of ISim.
 Time resolution is 1 ps
@@ -9,4 +9,4 @@ Time resolution is 1 ps
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # run all
-Stopped at time : 53235832 ns : File "D:/github/POCP/StopWatch/stopwatch/stopwatch7seg_tb.vhd" Line 76
+Stopped at time : 68005220 ns : File "D:/github/POCP/StopWatch/stopwatch/timer_const_tb.vhd" Line 70

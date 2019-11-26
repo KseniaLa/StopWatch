@@ -49,7 +49,7 @@ architecture Behavioral of timer_clocks is
 
 signal clk2 : STD_LOGIC := '0';
 signal count2 : std_logic_vector (18 downto 0):="0000000000000000000";
-signal count1 : std_logic_vector (17 downto 0):="000000000000000000";
+signal count1 : std_logic_vector (18 downto 0):="0000000000000000000";
 signal h1, h2, m1, m2, s1, s2, ms1, ms2 : integer:=0; 
 signal PS, NS : STD_LOGIC_VECTOR (1 downto 0):="00"; 
 signal ss1, ss2, en : STD_LOGIC:='0';
@@ -75,7 +75,8 @@ adding : process (start_stop_button, RST, PS, NS, ss1, ss2)
 			ms1 <= 0;
 			ms2 <= 0;
 		else
-			if (count1 = "110010110111001101") then
+			--if (count1 = "110010110111001101") then
+			if (count1 = "1111010000100100000") then
 				if start_stop_button = '1' then
 					ss1 <= '1';
 				elsif start_stop_button = '0' then
@@ -166,7 +167,7 @@ adding : process (start_stop_button, RST, PS, NS, ss1, ss2)
 						ms1 <= 0;
 						ms2 <= 0;
 				end case;
-				count1 <= "000000000000000000";
+				count1 <= "0000000000000000000";
 			end if;
 			count1 <= std_logic_vector( unsigned(count1) + 1 );
 		end if;
