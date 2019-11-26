@@ -18,5 +18,5 @@ Waiting for 1 sub-compilation(s) to finish...
 WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: Системе не удается найти указанный путь, "isim\vga_tb_isim_beh.exe.sim\libPortability.dll".
 Compiled 7 VHDL Units
 Built simulation executable C:/GitHub/StopWatch/stopwatch/vga_tb_isim_beh.exe
-Fuse Memory Usage: 34124 KB
-Fuse CPU Usage: 483 ms
+Fuse Memory Usage: 34228 KB
+Fuse CPU Usage: 515 ms
