@@ -84,7 +84,7 @@ begin
 				hs <= "0000000000";
 			end if;
 
-			if (vs= "1000001101") then     --525            
+			if (vs= "1000001001") then     --521           
 				vs <= "0000000000";
 			end if;
 		end if;

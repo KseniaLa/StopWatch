@@ -9,48 +9,4 @@ Time resolution is 1 ps
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # run all
-Stopped at time : 226229170 ns : File "C:/GitHub/StopWatch/stopwatch/vga_tb.vhd" Line 78
-# step
-Stopped at time : 226229170 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 50
-# step
-Stopped at time : 226229170 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 51
-# step
-Stopped at time : 226229170 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 54
-# step
-Stopped at time : 226229170 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 61
-# step
-Stopped at time : 226229180 ns : File "C:/GitHub/StopWatch/stopwatch/vga_tb.vhd" Line 78
-# step
-Stopped at time : 226229180 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 50
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga_tb.vhd" Line 78
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 50
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 51
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 52
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 61
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 62
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 63
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 64
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 66
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 70
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 73
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 77
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 80
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 82
-# step
-Stopped at time : 226229190 ns : File "C:/GitHub/StopWatch/stopwatch/vga.vhd" Line 87
-# step
-Stopped at time : 226229200 ns : File "C:/GitHub/StopWatch/stopwatch/vga_tb.vhd" Line 78
+Stopped at time : 5318763040 ns : File "C:/GitHub/StopWatch/stopwatch/vga_tb.vhd" Line 78
