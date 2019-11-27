@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   21:35:10 11/26/2019
+-- Create Date:   10:17:16 11/27/2019
 -- Design Name:   
--- Module Name:   C:/GitHub/StopWatch/stopwatch/vga_tb.vhd
+-- Module Name:   C:/GitHub/StopWatch/stopwatch/vga_tb2.vhd
 -- Project Name:  stopwatch
 -- Target Device:  
 -- Tool versions:  
@@ -32,21 +32,22 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY vga_tb IS
-END vga_tb;
+ENTITY vga_tb2 IS
+END vga_tb2;
  
-ARCHITECTURE behavior OF vga_tb IS 
+ARCHITECTURE behavior OF vga_tb2 IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT vga
     PORT(
          CLK : IN  std_logic;
+			clk1 : OUT  std_logic;
          hsync : OUT  std_logic;
          vsync : OUT  std_logic;
-         red : out  STD_LOGIC_VECTOR (4 downto 0);
-         green : out  STD_LOGIC_VECTOR (5 downto 0);
-         blue : out  STD_LOGIC_VECTOR (4 downto 0))
+         red : OUT  std_logic_vector(4 downto 0);
+         green : OUT  std_logic_vector(5 downto 0);
+         blue : OUT  std_logic_vector(4 downto 0)
         );
     END COMPONENT;
     
@@ -58,13 +59,14 @@ ARCHITECTURE behavior OF vga_tb IS
 
  	--Outputs
    signal hsync : std_logic;
+	signal clk1 : std_logic;
    signal vsync : std_logic;
-   signal red : out  STD_LOGIC_VECTOR (4 downto 0);
-   signal green : out  STD_LOGIC_VECTOR (5 downto 0);
-   signal blue : out  STD_LOGIC_VECTOR (4 downto 0));
+   signal red : std_logic_vector(4 downto 0);
+   signal green : std_logic_vector(5 downto 0);
+   signal blue : std_logic_vector(4 downto 0);
  
 BEGIN
-
+ 
 	-- Instantiate the Unit Under Test (UUT)
    uut: vga PORT MAP (
           CLK => CLK,
@@ -72,7 +74,8 @@ BEGIN
           vsync => vsync,
           red => red,
           green => green,
-          blue => blue
+          blue => blue,
+			 clk1 => clk1
         );
 
    CLK <= not CLK after ClockPeriod / 2;

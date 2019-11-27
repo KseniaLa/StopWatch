@@ -1,5 +1,5 @@
 ISim log file
-Running: C:\GitHub\StopWatch\stopwatch\vga_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/GitHub/StopWatch/stopwatch/vga_tb_isim_beh.wdb 
+Running: C:\GitHub\StopWatch\stopwatch\vga_tb2_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/GitHub/StopWatch/stopwatch/vga_tb2_isim_beh.wdb 
 ISim P.20131013 (signature 0x7708f090)
 This is a Full version of ISim.
 Time resolution is 1 ps
@@ -9,4 +9,3 @@ Time resolution is 1 ps
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # run all
-Stopped at time : 10910182770 ns : File "C:/GitHub/StopWatch/stopwatch/vga_tb.vhd" Line 78
