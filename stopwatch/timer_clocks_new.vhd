@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    23:00:21 11/24/2019 
+-- Create Date:    13:37:16 11/27/2019 
 -- Design Name: 
--- Module Name:    timer_clocks - Behavioral 
+-- Module Name:    timer_clocks_new - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -19,18 +19,18 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use ieee.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
-
-use IEEE.NUMERIC_STD.ALL;
+--use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
+-- any Xilinx primitives in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity timer_clocks is
+entity timer_clocks_new is
 Port (start_stop_button : in  STD_LOGIC;
 			RST : in  STD_LOGIC;
 			CLK : in STD_LOGIC;
@@ -43,9 +43,9 @@ Port (start_stop_button : in  STD_LOGIC;
 			s1 : inout integer;
 			ms2 : inout integer;
 			ms1 : inout integer);
-end timer_clocks;
+end timer_clocks_new;
 
-architecture Behavioral of timer_clocks is
+architecture Behavioral of timer_clocks_new is
 
 signal ClockFrequencyHz : integer := 500000;
 signal Ticks : integer;

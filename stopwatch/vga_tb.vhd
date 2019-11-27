@@ -46,7 +46,7 @@ ARCHITECTURE behavior OF vga_tb IS
          vsync : OUT  std_logic;
          red : out  STD_LOGIC_VECTOR (4 downto 0);
          green : out  STD_LOGIC_VECTOR (5 downto 0);
-         blue : out  STD_LOGIC_VECTOR (4 downto 0))
+         blue : out  STD_LOGIC_VECTOR (4 downto 0)
         );
     END COMPONENT;
     
@@ -59,9 +59,9 @@ ARCHITECTURE behavior OF vga_tb IS
  	--Outputs
    signal hsync : std_logic;
    signal vsync : std_logic;
-   signal red : out  STD_LOGIC_VECTOR (4 downto 0);
-   signal green : out  STD_LOGIC_VECTOR (5 downto 0);
-   signal blue : out  STD_LOGIC_VECTOR (4 downto 0));
+   signal red :  STD_LOGIC_VECTOR (4 downto 0);
+   signal green :  STD_LOGIC_VECTOR (5 downto 0);
+   signal blue :  STD_LOGIC_VECTOR (4 downto 0);
  
 BEGIN
 
