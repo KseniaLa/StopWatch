@@ -27,6 +27,7 @@
 *.ut
 *.xpi
 *.xst
+*.wdb
 *_bitgen.xwbt
 *_envsettings.html
 *_map.map

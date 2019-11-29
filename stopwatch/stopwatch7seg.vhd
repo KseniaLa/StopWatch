@@ -31,7 +31,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 entity stopwatch7seg is
-    Port ( start_stop_button : in  STD_LOGIC;
+    Port ( 
+			 start_button : in  STD_LOGIC;
+			 stop_button : in STD_LOGIC;
            CLK : in  STD_LOGIC;
            RST : in  STD_LOGIC;
            anode : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -41,18 +43,20 @@ end stopwatch7seg;
 architecture Behavioral of stopwatch7seg is
 
 	component timer_clocks
-Port (start_stop_button : in  STD_LOGIC;
+Port (
+			start_button : in  STD_LOGIC;
+			stop_button : in STD_LOGIC;
 			RST : in  STD_LOGIC;
 			CLK : in STD_LOGIC;
 			clock_480 : out STD_LOGIC;
-			h2 : inout integer;
-			h1: inout integer;
-			m2 : inout integer;
-			m1 : inout integer;
-			s2 : inout integer;
-			s1 : inout integer;
-			ms2 : inout integer;
-			ms1 : inout integer);
+			h2_out : out integer;
+			h1_out: out integer;
+			m2_out : out integer;
+			m1_out : out integer;
+			s2_out : out integer;
+			s1_out : out integer;
+			ms2_out : out integer;
+			ms1_out : out integer);
 end component;
 	
 	component sevensegm
@@ -73,8 +77,8 @@ end component;
 	signal h1, h2, m1, m2, s1, s2, ms1, ms2 : integer:=0;
 begin
 
-	ut0 : timer_clocks port map (start_stop_button => start_stop_button, RST => RST, CLK => CLK, clock_480 => clk1,
-				h2 => h2, h1 => h1, m2 => m2, m1 => m1, s2 => s2, s1 => s1, ms2 => ms2, ms1 => ms1);
+	ut0 : timer_clocks port map ( start_button => start_button, stop_button => stop_button, RST => RST, CLK => CLK, clock_480 => clk1,
+				h2_out => h2, h1_out => h1, m2_out => m2, m1_out => m1, s2_out => s2, s1_out => s1, ms2_out => ms2, ms1_out => ms1);
 	ut1 : sevensegm port map (clock_480 => clk1, h2 => h2, h1 => h1, m2 => m2, m1 => m1, s2 => s2, s1 => s1,
 				ms2 => ms2, ms1 => ms1 , anode => anode, cathode => cathode);
 

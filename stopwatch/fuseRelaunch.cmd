@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/GitHub/StopWatch/stopwatch/vga_tb2_isim_beh.exe" -prj "C:/GitHub/StopWatch/stopwatch/vga_tb2_beh.prj" "work.vga_tb2" 
+-intstyle "ise" -incremental -lib "secureip" -o "D:/github/POCP/StopWatch/stopwatch/stopwatch7seg_tb_isim_beh.exe" -prj "D:/github/POCP/StopWatch/stopwatch/stopwatch7seg_tb_beh.prj" "work.stopwatch7seg_tb" 

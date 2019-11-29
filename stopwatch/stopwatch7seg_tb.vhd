@@ -41,7 +41,8 @@ ARCHITECTURE behavior OF stopwatch7seg_tb IS
  
     COMPONENT stopwatch7seg
     PORT(
-         start_stop_button : IN  std_logic;
+         start_button : IN  std_logic;
+			stop_button : IN  std_logic;
          CLK : IN  std_logic;
          RST : IN  std_logic;
          anode : OUT  std_logic_vector(7 downto 0);
@@ -51,7 +52,8 @@ ARCHITECTURE behavior OF stopwatch7seg_tb IS
     
 
    --Inputs
-   signal start_stop_button : std_logic := '1';
+   signal start_button : std_logic := '0';
+	signal stop_button : std_logic := '0';
    signal CLK : std_logic := '0';
    signal RST : std_logic := '0';
 
@@ -66,7 +68,8 @@ BEGIN
  
  uut: entity Work.stopwatch7seg(Behavioral)
 	PORT MAP(
-		start_stop_button,
+		start_button,
+		stop_button,
       CLK,
       RST,
       anode,
@@ -74,7 +77,15 @@ BEGIN
 	);
 	
 	CLK <= not CLK after 10 ns;
-	start_stop_button <= '1' after 10 ns when start_stop_button = '0' else '0' after 10 ns;
+	
+	stsrt_stop: process
+	begin
+		wait for 100 ms;
+		start_button <= '1';
+		wait for 1000 ms;
+		stop_button <= '1';
+		wait for 1000 ms;
+	end process;
 	
 
 END;
