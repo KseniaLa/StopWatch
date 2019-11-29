@@ -94,9 +94,15 @@ BEGIN
 				green <= "000000";
 				blue <= "00000";
 			else
-				red <= "00000";
-				green <= "011111";
-				blue <= "00000";
+				if (((h_count > 20) and (h_count < 60)) and ((v_count > 20) and (v_count < 50))) then
+					red <= "11111";
+					green <= "000000";
+					blue <= "00000";
+				else
+					red <= "00000";
+					green <= "011111";
+					blue <= "00000";
+				end if;
 			end if;
 
 		END IF;
