@@ -50,16 +50,16 @@ architecture Behavioral of memory is
 type FIFO_Memory is array (0 to FIFO_DEPTH - 1) of STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
 		signal Memory : FIFO_Memory := (others => (others => '0'));
 		
-		signal ReadPtr : integer range -1 to FIFO_DEPTH - 1 := -1;
+		signal ReadPtr : integer range -1 to FIFO_DEPTH - 1 := 0;
 		signal WritePtr : natural range 0 to FIFO_DEPTH - 1;
 		signal ReadPtrMax : integer range -1 to FIFO_DEPTH - 1;
 
 begin
-	fifo_proc : process (CLK)
+	fifo_proc : process (WriteEn, RST)
 			begin
-		if rising_edge(CLK) then
+		--if rising_edge(CLK) then
 			if RST = '1' then
-				ReadPtr <= -1;
+				ReadPtr <= 0;
 				ReadPtrMax <= -1;
 				WritePtr <= 0;
 				
@@ -70,6 +70,7 @@ begin
 						DataOut <= Memory(ReadPtr);
 						Position <= ReadPtr;
 						ReadPtr <= ReadPtr + 1;
+						ReadEnd <= '0';
 					else
 						if (ReadPtr > 0) then
 							ReadPtr <= 0;
@@ -89,7 +90,7 @@ begin
 						end if;
 				end if;
 			end if;
-		end if;
+		--end if;
 	end process;
 end Behavioral;
 

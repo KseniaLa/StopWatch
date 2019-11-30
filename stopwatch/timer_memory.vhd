@@ -209,18 +209,18 @@ begin
 process(CLK)
 	begin
 	
---	if(save_button = '1' and pushed = '0') then
---		pushed <= '1';
---		WriteEnable <= '1';
---		ReadEnable <= '0';
---	else
---		if(save_button = '0') then
---			pushed <= '0';
---		else
---			WriteEnable <= '0';
---			ReadEnable <= '1';
---		end if;
---	end if;
+	if(save_button = '1' and pushed = '0') then
+		pushed <= '1';
+		WriteEnable <= '1';
+		ReadEnable <= '0';
+	else
+		if(save_button = '0') then
+			pushed <= '0';
+		else
+			WriteEnable <= '0';
+			ReadEnable <= '1';
+		end if;
+	end if;
 
 --	if(save_button = '1') then
 --		WriteEnable <= '1';
