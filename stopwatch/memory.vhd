@@ -40,57 +40,55 @@ entity memory is
 		WriteEn	: in  STD_LOGIC;
 		DataIn	: in  STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
 		ReadEn	: in  STD_LOGIC;
-		DataOut	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
-		ReadEnd	: out STD_LOGIC;
-		Position	: out integer
+		DataOut1	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut2	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut3	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut4	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut5	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut6	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut7	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut8	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0)
 	);
 end memory;
 
 architecture Behavioral of memory is
 type FIFO_Memory is array (0 to FIFO_DEPTH - 1) of STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
 		signal Memory : FIFO_Memory := (others => (others => '0'));
-		
-		signal ReadPtr : integer range -1 to FIFO_DEPTH - 1 := 0;
 		signal WritePtr : natural range 0 to FIFO_DEPTH - 1;
-		signal ReadPtrMax : integer range -1 to FIFO_DEPTH - 1;
 
 begin
 	fifo_proc : process (WriteEn, RST)
 			begin
-		--if rising_edge(CLK) then
-			if RST = '1' then
-				ReadPtr <= 0;
-				ReadPtrMax <= -1;
-				WritePtr <= 0;
-				
-				ReadEnd <= '0';
-			else
-				if (ReadEn = '1' and WriteEn = '0') then
-					if ((ReadPtr <= ReadPtrMax) and (ReadPtrMax > -1)) then
-						DataOut <= Memory(ReadPtr);
-						Position <= ReadPtr;
-						ReadPtr <= ReadPtr + 1;
-						ReadEnd <= '0';
-					else
-						if (ReadPtr > 0) then
-							ReadPtr <= 0;
-						end if;
-						ReadEnd <= '1';
+				if RST = '1' then
+					WritePtr <= 0;
+					DataOut1 <= "00000000000000000000000000000000";
+					DataOut2 <= "00000000000000000000000000000000";
+					DataOut3 <= "00000000000000000000000000000000";
+					DataOut4 <= "00000000000000000000000000000000";
+					DataOut5 <= "00000000000000000000000000000000";
+					DataOut6 <= "00000000000000000000000000000000";
+					DataOut7 <= "00000000000000000000000000000000";
+					DataOut8 <= "00000000000000000000000000000000";
+				else
+					if (ReadEn = '1' and WriteEn = '0') then
+						DataOut1 <= Memory(0);
+						DataOut2 <= Memory(1);
+						DataOut3 <= Memory(2);
+						DataOut4 <= Memory(3);
+						DataOut5 <= Memory(4);
+						DataOut6 <= Memory(5);
+						DataOut7 <= Memory(6);
+						DataOut8 <= Memory(7);
 					end if;
-				end if;
-				
-				if (WriteEn = '1' and ReadEn = '0') then
+					
+					if (WriteEn = '1' and ReadEn = '0') then
 						for ptr in FIFO_DEPTH - 2 downto 0 loop
 							Memory(ptr + 1) <= Memory(ptr);
 						end loop;
 
 						Memory(WritePtr) <= DataIn;
-						if (ReadPtrMax < FIFO_DEPTH - 1) then
-							ReadPtrMax <= ReadPtrMax + 1;
-						end if;
+					end if;
 				end if;
-			end if;
-		--end if;
 	end process;
 end Behavioral;
 

@@ -46,23 +46,15 @@ ARCHITECTURE behavior OF timer_memory_tb IS
          stop_button : IN  std_logic;
          RST : IN  std_logic;
          save_button : IN  std_logic;
-         h2_timer : OUT  integer;
-         h1_timer : OUT  integer;
-         m2_timer : OUT  integer;
-         m1_timer : OUT  integer;
-         s2_timer : OUT  integer;
-         s1_timer : OUT  integer;
-         ms2_timer : OUT  integer;
-         ms1_timer : OUT  integer;
-         h2_mem : OUT  integer;
-         h1_mem : OUT  integer;
-         m2_mem : OUT  integer;
-         m1_mem : OUT  integer;
-         s2_mem : OUT  integer;
-         s1_mem : OUT  integer;
-         ms2_mem : OUT  integer;
-         ms1_mem : OUT  integer;
-         mem_position : OUT  integer
+         DataOut_timer	: out STD_LOGIC_VECTOR (31 downto 0);
+			DataOut1	: out STD_LOGIC_VECTOR (31 downto 0);
+		   DataOut2	: out STD_LOGIC_VECTOR (31 downto 0);
+			DataOut3	: out STD_LOGIC_VECTOR (31 downto 0);
+			DataOut4	: out STD_LOGIC_VECTOR (31 downto 0);
+			DataOut5	: out STD_LOGIC_VECTOR (31 downto 0);
+			DataOut6	: out STD_LOGIC_VECTOR (31 downto 0);
+			DataOut7	: out STD_LOGIC_VECTOR (31 downto 0);
+			DataOut8	: out STD_LOGIC_VECTOR (31 downto 0)
         );
     END COMPONENT;
     
@@ -75,23 +67,15 @@ ARCHITECTURE behavior OF timer_memory_tb IS
    signal save_button : std_logic := '0';
 
  	--Outputs
-   signal h2_timer : integer;
-   signal h1_timer : integer;
-   signal m2_timer : integer;
-   signal m1_timer : integer;
-   signal s2_timer : integer;
-   signal s1_timer : integer;
-   signal ms2_timer : integer;
-   signal ms1_timer : integer;
-   signal h2_mem : integer;
-   signal h1_mem : integer;
-   signal m2_mem : integer;
-   signal m1_mem : integer;
-   signal s2_mem : integer;
-   signal s1_mem : integer;
-   signal ms2_mem : integer;
-   signal ms1_mem : integer;
-   signal mem_position : integer;
+   signal DataOut_timer	:  STD_LOGIC_VECTOR (31 downto 0);
+	signal DataOut1	: STD_LOGIC_VECTOR (31 downto 0);
+	signal DataOut2	: STD_LOGIC_VECTOR (31 downto 0);
+	signal DataOut3	: STD_LOGIC_VECTOR (31 downto 0);
+	signal DataOut4	: STD_LOGIC_VECTOR (31 downto 0);
+	signal DataOut5	: STD_LOGIC_VECTOR (31 downto 0);
+	signal DataOut6	: STD_LOGIC_VECTOR (31 downto 0);
+	signal DataOut7	: STD_LOGIC_VECTOR (31 downto 0);
+	signal DataOut8	: STD_LOGIC_VECTOR (31 downto 0);
 
    -- Clock period definitions
    constant CLK_period : time := 10 ns;
@@ -106,23 +90,15 @@ BEGIN
           stop_button => stop_button,
           RST => RST,
           save_button => save_button,
-          h2_timer => h2_timer,
-          h1_timer => h1_timer,
-          m2_timer => m2_timer,
-          m1_timer => m1_timer,
-          s2_timer => s2_timer,
-          s1_timer => s1_timer,
-          ms2_timer => ms2_timer,
-          ms1_timer => ms1_timer,
-          h2_mem => h2_mem,
-          h1_mem => h1_mem,
-          m2_mem => m2_mem,
-          m1_mem => m1_mem,
-          s2_mem => s2_mem,
-          s1_mem => s1_mem,
-          ms2_mem => ms2_mem,
-          ms1_mem => ms1_mem,
-          mem_position => mem_position
+          DataOut_timer => DataOut_timer,
+			 DataOut1 => DataOut1,
+			 DataOut2 => DataOut2,
+			 DataOut3 => DataOut3,
+			 DataOut4 => DataOut4,
+			 DataOut5 => DataOut5,
+			 DataOut6 => DataOut6,
+			 DataOut7 => DataOut7,
+			 DataOut8 => DataOut8
         );
 		  
  CLK <= not CLK after 10 ns;

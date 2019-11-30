@@ -35,23 +35,16 @@ entity timer_memory is
 			  stop_button : in STD_LOGIC;
 			  RST : in  STD_LOGIC;
            save_button : in  STD_LOGIC;
-           h2_timer : out  integer;
-           h1_timer : out  integer;
-           m2_timer : out  integer;
-           m1_timer : out  integer;
-           s2_timer : out  integer;
-           s1_timer : out  integer;
-           ms2_timer : out  integer;
-           ms1_timer : out  integer;
-           h2_mem : out  integer;
-           h1_mem : out  integer;
-           m2_mem : out  integer;
-           m1_mem : out  integer;
-           s2_mem : out  integer;
-           s1_mem : out  integer;
-           ms2_mem : out  integer;
-           ms1_mem : out  integer;
-           mem_position : out  integer);
+			  DataOut_timer	: out STD_LOGIC_VECTOR (31 downto 0);
+			  DataOut1	: out STD_LOGIC_VECTOR (31 downto 0);
+				DataOut2	: out STD_LOGIC_VECTOR (31 downto 0);
+				DataOut3	: out STD_LOGIC_VECTOR (31 downto 0);
+				DataOut4	: out STD_LOGIC_VECTOR (31 downto 0);
+				DataOut5	: out STD_LOGIC_VECTOR (31 downto 0);
+				DataOut6	: out STD_LOGIC_VECTOR (31 downto 0);
+				DataOut7	: out STD_LOGIC_VECTOR (31 downto 0);
+				DataOut8	: out STD_LOGIC_VECTOR (31 downto 0)
+           );
 end timer_memory;
 
 architecture Behavioral of timer_memory is
@@ -87,37 +80,6 @@ function get_vect_of_digit(
 	end case;	
 	end function get_vect_of_digit;
 	
-	function get_digit_of_vector(
-	vect : in std_logic_vector(3 downto 0))
-	return integer is
-	variable digit : integer;
-	begin
-	case (vect) is
-		when "0000" =>
-			return 0;
-		when "0001" =>
-			return 1;
-		when "0010" =>
-			return 2;
-		when "0011" =>
-			return 3;
-		when "0100" =>
-			return 4;
-		when "0101" =>
-			return 5;
-		when "0110" =>
-			return 6;
-		when "0111" =>
-			return 7;
-		when "1000" =>
-			return 8;
-		when "1001" =>
-			return 9;
-		when others =>
-			return 0;
-	end case;	
-	end function get_digit_of_vector;
-	
 	function get_vect_for_memory(
 	h2 : in integer;
   h1 : in  integer;
@@ -134,33 +96,7 @@ function get_vect_of_digit(
 					get_vect_of_digit(s2) & get_vect_of_digit(s1) & get_vect_of_digit(ms2) & get_vect_of_digit(ms1);
 	end function get_vect_for_memory;
 	
-	function get_parameter(
-		param : in integer;
-		DataIn : in std_logic_vector(31 downto 0))
-		return integer is
-		variable digit : integer;
-	begin
-		case (param) is
-			when 0 =>
-				return get_digit_of_vector(DataIn(31 downto 28));
-			when 1 =>
-				return get_digit_of_vector(DataIn(27 downto 24));
-			when 2 =>
-				return get_digit_of_vector(DataIn(23 downto 20));
-			when 3 =>
-				return get_digit_of_vector(DataIn(19 downto 16));
-			when 4 =>
-				return get_digit_of_vector(DataIn(15 downto 12));
-			when 5 =>
-				return get_digit_of_vector(DataIn(11 downto 8));
-			when 6 =>
-				return get_digit_of_vector(DataIn(7 downto 4));
-			when 7 =>
-				return get_digit_of_vector(DataIn(3 downto 0));
-			when others =>
-				return get_digit_of_vector("0000");
-		end case;	
-	end get_parameter;
+	
 
 component timer
 Port (
@@ -189,9 +125,14 @@ component memory
 		WriteEn	: in  STD_LOGIC;
 		DataIn	: in  STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
 		ReadEn	: in  STD_LOGIC;
-		DataOut	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
-		ReadEnd	: out STD_LOGIC;
-		Position	: out integer
+		DataOut1	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut2	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut3	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut4	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut5	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut6	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut7	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
+		DataOut8	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0)
 	);
 end component;
 
@@ -201,9 +142,8 @@ signal ReadEnable : std_logic := '1';
 signal pushed : std_logic := '0';
 signal DataIn	:  STD_LOGIC_VECTOR (31 downto 0);
 signal DataOut	:  STD_LOGIC_VECTOR (31 downto 0);
-signal ReadEnd :  std_logic;
-signal MemPosition : integer;
-signal ss1, ss2 : STD_LOGIC:='0';
+signal count2 : std_logic_vector (16 downto 0):="00000000000000000";
+
 begin
 	
 process(CLK)
@@ -222,58 +162,21 @@ process(CLK)
 		end if;
 	end if;
 
---	if(save_button = '1') then
---		WriteEnable <= '1';
---		ReadEnable <= '0';
---	else
---			WriteEnable <= '0';
---			ReadEnable <= '1';
---	end if;
-
-	
-	h2_timer <= h2;
-   h1_timer <= h1;
-   m2_timer <= m2;
-   m1_timer <= m1;
-   s2_timer <= s2;
-   s1_timer <= s1;
-   ms2_timer <= ms2;
-   ms1_timer <= ms1;
 	DataIn <= get_vect_for_memory(h2, h1, m2, m1, s2, s1, ms2, ms1);
-	h2_mem <= get_parameter(0, DataOut);
-	h1_mem <= get_parameter(1, DataOut);
-	m2_mem <= get_parameter(2, DataOut);
-	m1_mem <= get_parameter(3, DataOut);
-	s2_mem <= get_parameter(4, DataOut);
-	s1_mem <= get_parameter(5, DataOut);
-	ms2_mem <= get_parameter(6, DataOut);
-	ms1_mem <= get_parameter(7, DataOut);
-	
-	if(ReadEnd = '1') then
-		mem_position <= -1;
-	else
-		mem_position <= MemPosition;
-	end if;
 	end process;
 	
---process(CLK)
---begin
---	if save_button = '1' then --to detect "risingedge" for the button
---		ss1 <= '1';
---	elsif save_button = '0' then
---		ss1 <= '0';
---	end if;
---	
---	if ss2 = '0' and ss1 = '1' then
---	WriteEnable <= not WriteEnable;
---	ReadEnable <= not ReadEnable;
---	end if;
---	
---	ss2 <= ss1;--
---end process;
+clk1 : process (CLK) 
+	begin
+		if (rising_edge(CLK)) then
+			if count2 = "11000011010100000" then 
+				DataOut_timer <= get_vect_for_memory(h2, h1, m2, m1, s2, s1, ms2, ms1);
+				count2 <= "00000000000000000";
+			end if;
+			count2 <= std_logic_vector( unsigned(count2) + 1 );
+		end if;
+	end process;
 	
 ut0 : timer port map (start_button, stop_button, RST, CLK, h2, h1, m2, m1, s2, s1, ms2, ms1);
-ut1 : memory port map (CLK, RST, WriteEnable, DataIn, ReadEnable, DataOut, ReadEnd, MemPosition);
+ut1 : memory port map (CLK, RST, WriteEnable, DataIn, ReadEnable, DataOut1, DataOut2,DataOut3,DataOut4,DataOut5,DataOut6,DataOut7,DataOut8);
 
 end Behavioral;
-
