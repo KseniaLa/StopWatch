@@ -42,7 +42,7 @@ entity memory is
 		ReadEn	: in  STD_LOGIC;
 		DataOut	: out STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
 		ReadEnd	: out STD_LOGIC;
-		Empty	: out STD_LOGIC
+		Position	: out integer
 	);
 end memory;
 
@@ -50,7 +50,7 @@ architecture Behavioral of memory is
 type FIFO_Memory is array (0 to FIFO_DEPTH - 1) of STD_LOGIC_VECTOR (DATA_WIDTH - 1 downto 0);
 		signal Memory : FIFO_Memory := (others => (others => '0'));
 		
-		signal ReadPtr : integer range -1 to FIFO_DEPTH - 1;
+		signal ReadPtr : integer range -1 to FIFO_DEPTH - 1 := -1;
 		signal WritePtr : natural range 0 to FIFO_DEPTH - 1;
 		signal ReadPtrMax : integer range -1 to FIFO_DEPTH - 1;
 
@@ -68,6 +68,7 @@ begin
 				if (ReadEn = '1' and WriteEn = '0') then
 					if ((ReadPtr <= ReadPtrMax) and (ReadPtrMax > -1)) then
 						DataOut <= Memory(ReadPtr);
+						Position <= ReadPtr;
 						ReadPtr <= ReadPtr + 1;
 					else
 						if (ReadPtr > 0) then
