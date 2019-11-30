@@ -256,19 +256,21 @@ process(CLK)
 	end if;
 	end process;
 	
-process(CLK)
-begin
-	if save_button = '1' then --to detect "risingedge" for the button
-		ss1 <= '1';
-	elsif save_button = '0' then
-		ss1 <= '0';
-	end if;
-	ss2 <= ss1;
-	if ss2 = '0' and ss1 = '1' then
-	WriteEnable <= not WriteEnable;
-	ReadEnable <= not ReadEnable;
-	end if;
-end process;
+--process(CLK)
+--begin
+--	if save_button = '1' then --to detect "risingedge" for the button
+--		ss1 <= '1';
+--	elsif save_button = '0' then
+--		ss1 <= '0';
+--	end if;
+--	
+--	if ss2 = '0' and ss1 = '1' then
+--	WriteEnable <= not WriteEnable;
+--	ReadEnable <= not ReadEnable;
+--	end if;
+--	
+--	ss2 <= ss1;--
+--end process;
 	
 ut0 : timer port map (start_button, stop_button, RST, CLK, h2, h1, m2, m1, s2, s1, ms2, ms1);
 ut1 : memory port map (CLK, RST, WriteEnable, DataIn, ReadEnable, DataOut, ReadEnd, MemPosition);

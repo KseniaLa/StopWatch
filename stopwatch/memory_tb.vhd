@@ -56,7 +56,7 @@ ARCHITECTURE behavior OF memory_tb IS
          ReadEn : IN  std_logic;
          DataOut : OUT  std_logic_vector(DATA_WIDTH - 1 downto 0);
          ReadEnd : OUT  std_logic;
-         Empty : OUT  std_logic
+         Position : OUT  integer
         );
     END COMPONENT;
     
@@ -64,14 +64,14 @@ ARCHITECTURE behavior OF memory_tb IS
    --Inputs
    signal CLK : std_logic := '0';
    signal RST : std_logic := '0';
-   signal WriteEn : std_logic := '1';
+   signal WriteEn : std_logic := '0';
    signal DataIn : std_logic_vector(DATA_WIDTH - 1 downto 0) := (others => '0');
-   signal ReadEn : std_logic := '0';
+   signal ReadEn : std_logic := '1';
 
  	--Outputs
    signal DataOut : std_logic_vector(DATA_WIDTH - 1 downto 0);
    signal ReadEnd : std_logic;
-   signal Empty : std_logic;
+   signal Position : integer;
 	
 	signal x : std_logic := '1';
 
@@ -90,7 +90,7 @@ BEGIN
           ReadEn => ReadEn,
           DataOut => DataOut,
           ReadEnd => ReadEnd,
-          Empty => Empty
+          Position => Position
         );
 		  
   write_sim: process
@@ -100,6 +100,17 @@ BEGIN
 			DataIn(i + 1) <= DataIn(i);
 		end loop;	
 		DataIn(0) <= x;
+	end process;
+	
+	read_write: process
+	begin	
+		wait for 50 ms;
+		WriteEn <= '1';
+		ReadEn <= '0';
+		wait for 50 ns;
+		ReadEn <= '1';
+		WriteEn <= '0';
+		wait for 100 ms;
 	end process;
 	
 	CLK <= not CLK after clock_period;
