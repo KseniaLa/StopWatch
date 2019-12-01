@@ -113,53 +113,229 @@ BEGIN
 				v_sync <= '0';--v_pol;			
 			END IF;
 			
-			if ((h_count > 2) and (h_count < 3)) then -- 1
+			
+			-- red rectangle 
+			if ((h_count >= 20) and (h_count < 28)) then -- 1
 				col := 0;
-			elsif ((h_count > 2) and (h_count < 3)) then -- 2
+				h_min := 20;
+				h_max := 27;
+			elsif ((h_count >= 32) and (h_count < 40)) then -- 2
 				col := 1;
-			elsif ((h_count > 2) and (h_count < 3)) then -- 3
+				h_min := 32;
+				h_max := 39;
+			elsif ((h_count >= 44) and (h_count < 52)) then -- 3
 				col := 2;
-			elsif ((h_count > 2) and (h_count < 3)) then -- 4
+				h_min := 44;
+				h_max := 51;
+			elsif ((h_count >= 56) and (h_count < 64)) then -- 4
 				col := 3;
-			elsif ((h_count > 2) and (h_count < 3)) then -- 5
+				h_min := 56;
+				h_max := 63;
+			elsif ((h_count >= 68) and (h_count < 76)) then -- 5
 				col := 4;
-			elsif ((h_count > 2) and (h_count < 3)) then -- 6
+				h_min := 68;
+				h_max := 75;
+			elsif ((h_count >= 80) and (h_count < 88)) then -- 6
 				col := 5;
-			elsif ((h_count > 2) and (h_count < 3)) then -- 7
+				h_min := 80;
+				h_max := 87;
+			elsif ((h_count >= 92) and (h_count < 100)) then -- 7
 				col := 6;
-			elsif ((h_count > 2) and (h_count < 3)) then -- 8
+				h_min := 92;
+				h_max := 99;
+			elsif ((h_count >= 104) and (h_count < 112)) then -- 8
 				col := 7;
+				h_min := 104;
+				h_max := 111;
 			else
 				col := 0;
+				h_min := 0;
+				h_max := 0;
 			end if;
 			
-			if ((v_count > 2) and (v_count < 3)) then
-				row := 0;
-			elsif ((v_count > 2) and (v_count < 3)) then
+			if ((v_count >= 20) and (v_count < 36)) then
+				row := 0;				
+				v_min := 20; --for red square
+				v_max := 36; 
+			elsif ((v_count >= 52) and (v_count < 68)) then
 				row := 1;
-			elsif ((v_count > 2) and (v_count < 3)) then
+				v_min := 52; 
+				v_max := 67;
+			elsif ((v_count >= 76) and (v_count < 92)) then
 				row := 2;
-			elsif ((v_count > 2) and (v_count < 3)) then
+				v_min := 76; 
+				v_max := 91;
+			elsif ((v_count >= 100) and (v_count < 116)) then
 				row := 3;
-			elsif ((v_count > 2) and (v_count < 3)) then
+				v_min := 100; 
+				v_max := 115;
+			elsif ((v_count >= 124) and (v_count < 140)) then
 				row := 4;
-			elsif ((v_count > 2) and (v_count < 3)) then
+				v_min := 124; 
+				v_max := 139;
+			elsif ((v_count >= 148) and (v_count < 164)) then
 				row := 5;
-			elsif ((v_count > 2) and (v_count < 3)) then
+				v_min := 148; 
+				v_max := 163;
+			elsif ((v_count >= 172) and (v_count < 188)) then
 				row := 6;
-			elsif ((v_count > 2) and (v_count < 3)) then
+				v_min := 172; 
+				v_max := 187;
+			elsif ((v_count >= 196) and (v_count < 212)) then
 				row := 7;
-			elsif ((v_count > 2) and (v_count < 3)) then
+				v_min := 196; 
+				v_max := 211;
+			elsif ((v_count >= 220) and (v_count < 236)) then
 				row := 8;
+				v_min := 220; 
+				v_max := 235;
 			else
 				row := 0;
+				v_min := 0; 
+				v_max := 0;
 			end if;
 			
-			data_pos := 8 * row + col; --??????????????????????
+			data_pos := 8 * row + col; 
 			curr_digit := data(data_pos);
 			
-			-- here!
-			
+		-- choose green rects coordinates
+		
+		case curr_digit is
+			when 1 =>
+				h_sq11 := 0; -- top left (x; y) 
+				v_sq11 := 6;
+				
+				h_sq12 := 0; -- bottom right (x; y)
+				v_sq12 := 6;
+				
+				h_sq21 := 0; -- top left(x; y)
+				v_sq21 := 7;
+				
+				h_sq22 := 6; -- bottom right (x; y)
+				v_sq22 := 15;
+			when 2 =>
+				h_sq11 := 0; 
+				v_sq11 := 1;
+				
+				h_sq12 := 6; 
+				v_sq12 := 6;
+				
+				h_sq21 := 0; 
+				v_sq21 := 8;
+				
+				h_sq22 := 6; 
+				v_sq22 := 14;
+			when 3 =>
+				h_sq11 := 0; 
+				v_sq11 := 1;
+				
+				h_sq12 := 6; 
+				v_sq12 := 6;
+				
+				h_sq21 := 0; 
+				v_sq21 := 8;
+				
+				h_sq22 := 6; 
+				v_sq22 := 14;				
+			when 4 =>
+				h_sq11 := 1; 
+				v_sq11 := 0;
+				
+				h_sq12 := 6; 
+				v_sq12 := 6;
+				
+				h_sq21 := 0;
+				v_sq21 := 8;
+				
+				h_sq22 := 6; 
+				v_sq22 := 14;				
+			when 5 =>
+				h_sq11 := 1; 
+				v_sq11 := 1;
+				
+				h_sq12 := 7; 
+				v_sq12 := 6;
+				
+				h_sq21 := 0;
+				v_sq21 := 8;
+				
+				h_sq22 := 6;
+				v_sq22 := 14;				
+			when 6 =>
+				h_sq11 := 1;
+				v_sq11 := 1;
+				
+				h_sq12 := 7;
+				v_sq12 := 6;
+				
+				h_sq21 := 1;
+				v_sq21 := 8;
+				
+				h_sq22 := 6;
+				v_sq22 := 14;				
+			when 7 =>
+				h_sq11 := 0;
+				v_sq11 := 1;
+				
+				h_sq12 := 6;
+				v_sq12 := 6;
+				
+				h_sq21 := 0;
+				v_sq21 := 7;
+				
+				h_sq22 := 6;
+				v_sq22 := 15;				
+			when 8 =>
+				h_sq11 := 1; 
+				v_sq11 := 1;
+				
+				h_sq12 := 6;
+				v_sq12 := 6;
+				
+				h_sq21 := 1;
+				v_sq21 := 8;
+				
+				h_sq22 := 6;
+				v_sq22 := 14;				
+			when 9 =>
+				h_sq11 := 1;
+				v_sq11 := 1;
+				
+				h_sq12 := 6;
+				v_sq12 := 6;
+				
+				h_sq21 := 0;
+				v_sq21 := 8;
+				
+				h_sq22 := 6;
+				v_sq22 := 14;				
+			when 0 =>
+				h_sq11 := 1;
+				v_sq11 := 1;
+				
+				h_sq12 := 6;
+				v_sq12 := 6;
+				
+				h_sq21 := 1;
+				v_sq21 := 7;
+				
+				h_sq22 := 6;
+				v_sq22 := 14;
+			when others => 
+				h_sq11 := 0;
+				v_sq11 := 0;
+				
+				h_sq12 := 0;
+				v_sq12 := 0;
+				
+				h_sq21 := 0;
+				v_sq21 := 0;
+				
+				h_sq22 := 0;
+				v_sq22 := 0;
+		end case;
+
+
 			if (h_count > h_pixels + h_fp) then
 				red <= "00000";
 				green <= "000000";
