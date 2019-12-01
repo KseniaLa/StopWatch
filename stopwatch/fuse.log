@@ -1,4 +1,4 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o D:/github/POCP/StopWatch/stopwatch/timer_memory_tb_isim_beh.exe -prj D:/github/POCP/StopWatch/stopwatch/timer_memory_tb_beh.prj timer_memory_tb 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o D:/github/POCP/StopWatch/stopwatch/main_tb_isim_beh.exe -prj D:/github/POCP/StopWatch/stopwatch/main_tb_beh.prj work.main_tb 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
@@ -6,7 +6,8 @@ Determining compilation order of HDL files
 Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/timer.vhd" into library work
 Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/memory.vhd" into library work
 Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/timer_memory.vhd" into library work
-Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/timer_memory_tb.vhd" into library work
+Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/main.vhd" into library work
+Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/main_tb.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
@@ -15,10 +16,10 @@ Compiling package numeric_std
 Compiling architecture behavioral of entity timer [timer_default]
 Compiling architecture behavioral of entity memory [\memory(32,8)\]
 Compiling architecture behavioral of entity timer_memory [timer_memory_default]
-Compiling architecture behavior of entity timer_memory_tb
+Compiling architecture behavioral of entity main [main_default]
+Compiling architecture behavior of entity main_tb
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-Compiled 10 VHDL Units
-Built simulation executable D:/github/POCP/StopWatch/stopwatch/timer_memory_tb_isim_beh.exe
-Fuse Memory Usage: 35736 KB
-Fuse CPU Usage: 343 ms
+Compiled 12 VHDL Units
+Built simulation executable D:/github/POCP/StopWatch/stopwatch/main_tb_isim_beh.exe
+Fuse Memory Usage: 35880 KB
+Fuse CPU Usage: 671 ms
