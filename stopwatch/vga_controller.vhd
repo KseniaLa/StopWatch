@@ -203,9 +203,9 @@ BEGIN
 		case curr_digit is
 			when 1 =>
 				h_sq11 := 0; -- top left (x; y) 
-				v_sq11 := 6;
+				v_sq11 := 0;
 				
-				h_sq12 := 0; -- bottom right (x; y)
+				h_sq12 := 6; -- bottom right (x; y)
 				v_sq12 := 6;
 				
 				h_sq21 := 0; -- top left(x; y)
@@ -220,10 +220,10 @@ BEGIN
 				h_sq12 := 6; 
 				v_sq12 := 6;
 				
-				h_sq21 := 0; 
+				h_sq21 := 1; 
 				v_sq21 := 8;
 				
-				h_sq22 := 6; 
+				h_sq22 := 7; 
 				v_sq22 := 14;
 			when 3 =>
 				h_sq11 := 0; 
@@ -248,7 +248,7 @@ BEGIN
 				v_sq21 := 8;
 				
 				h_sq22 := 6; 
-				v_sq22 := 14;				
+				v_sq22 := 15;				
 			when 5 =>
 				h_sq11 := 1; 
 				v_sq11 := 1;
@@ -341,9 +341,9 @@ BEGIN
 				green <= "000000";
 				blue <= "00000";
 			else
-				if (((h_count > h_min) and (h_count < h_max)) and ((v_count > v_min) and (v_count < v_max))) then
-					if (((h_count >= h_sq11)  and (h_count <= h_sq12) and (v_count >= v_sq11)  and (v_count <= v_sq12)) or 
-					   ((h_count >= h_sq21)  and (h_count <= h_sq22) and (v_count >= v_sq21)  and (v_count <= v_sq22))) then
+				if (((h_count >= h_min) and (h_count <= h_max)) and ((v_count >= v_min) and (v_count <= v_max))) then
+					if (((h_count >= h_min + h_sq11)  and (h_count <= h_min + h_sq12) and (v_count >= v_min + v_sq11)  and (v_count <= v_min + v_sq12)) or 
+					   ((h_count >= h_min + h_sq21)  and (h_count <= h_min + h_sq22) and (v_count >= v_min + v_sq21)  and (v_count <= v_min + v_sq22))) then
 						red <= "00000";
 						green <= "011111";
 						blue <= "00000";
