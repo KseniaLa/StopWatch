@@ -5,6 +5,7 @@ Turning on mult-threading, number of parallel sub-compilation jobs: 16
 Determining compilation order of HDL files
 Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/timer.vhd" into library work
 Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/memory.vhd" into library work
+Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/vga_controller.vhd" into library work
 Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/timer_memory.vhd" into library work
 Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/main.vhd" into library work
 Parsing VHDL file "D:/github/POCP/StopWatch/stopwatch/main_tb.vhd" into library work
@@ -13,13 +14,18 @@ Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package numeric_std
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling package vga_controller_type
 Compiling architecture behavioral of entity timer [timer_default]
 Compiling architecture behavioral of entity memory [\memory(32,8)\]
 Compiling architecture behavioral of entity timer_memory [timer_memory_default]
+Compiling architecture behavior of entity vga_controller [\vga_controller(96,48,640,16,'0'...]
 Compiling architecture behavioral of entity main [main_default]
 Compiling architecture behavior of entity main_tb
 Time Resolution for simulation is 1ps.
-Compiled 12 VHDL Units
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 17 VHDL Units
 Built simulation executable D:/github/POCP/StopWatch/stopwatch/main_tb_isim_beh.exe
-Fuse Memory Usage: 35880 KB
-Fuse CPU Usage: 671 ms
+Fuse Memory Usage: 36656 KB
+Fuse CPU Usage: 702 ms

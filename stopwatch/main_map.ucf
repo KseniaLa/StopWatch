@@ -1,4 +1,4 @@
-NET "CLK" CLOCK_DEDICATED_ROUTE = FALSE;
+
 
 NET CLK                       		    	LOC = T8 | IOSTANDARD = "LVCMOS33";
 NET RST                                   LOC = C3 | IOSTANDARD = "LVCMOS33";

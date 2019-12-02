@@ -9,4 +9,6 @@ Time resolution is 1 ps
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # run all
-Stopped at time : 450147770 ns : File "D:/github/POCP/StopWatch/stopwatch/timer.vhd" Line 62
+Stopped at time : 176526770 ns : File "D:/github/POCP/StopWatch/stopwatch/vga_controller.vhd" Line 105
+# run all
+Stopped at time : 183649580 ns : File "D:/github/POCP/StopWatch/stopwatch/timer_memory.vhd" Line 170

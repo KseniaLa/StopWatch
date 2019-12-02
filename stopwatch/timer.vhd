@@ -57,9 +57,9 @@ signal en : STD_LOGIC := '0';
 
 begin
 
-process(Clk) is
+process(CLK) is
     begin
-        if rising_edge(Clk) then
+        if rising_edge(CLK) then
 		  
 				if start_button = '1' then
 					en <= '1';

@@ -23,6 +23,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
+use ieee.std_logic_unsigned.all;
+
+--package vga_controller_type is
+--        type data_array is array(0 to 71) of integer;
+--end package;
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use ieee.std_logic_unsigned.all;
+use work.vga_controller_type.all;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
@@ -35,8 +45,8 @@ entity main is
            start_button : in  STD_LOGIC;
            stop_button : in  STD_LOGIC;
            save_button : in  STD_LOGIC;
-           hsync : out  STD_LOGIC;
-           vsync : out  STD_LOGIC;
+           h_sync : out  STD_LOGIC;
+           v_sync : out  STD_LOGIC;
            red : out  STD_LOGIC_VECTOR (4 downto 0);
            green : out  STD_LOGIC_VECTOR (5 downto 0);
            blue : out  STD_LOGIC_VECTOR (4 downto 0));
@@ -99,7 +109,7 @@ function get_parameter(
 			when 7 =>
 				return get_digit_of_vector(DataIn(3 downto 0));
 			when others =>
-				return get_digit_of_vector("0000");
+				return get_digit_of_vector("0001");
 		end case;	
 	end get_parameter;
 	
@@ -121,10 +131,33 @@ component timer_memory
            );
 end component;
 
-type integers_array is array(0 to 71) of integer;
-signal digits_array: integers_array;
-signal DataOut_timer, DataOut1, DataOut2, DataOut3, DataOut4, DataOut5, DataOut6, DataOut7, DataOut8 : STD_LOGIC_VECTOR (31 downto 0);
+component vga_controller
+	
+		GENERIC(
+		h_pulse 	:	INTEGER := 96;
+		h_bp	 	:	INTEGER := 48;
+		h_pixels	:	INTEGER := 640;
+		h_fp	 	:	INTEGER := 16;	
+		h_pol		:	STD_LOGIC := '0';
+		v_pulse 	:	INTEGER := 2;
+		v_bp	 	:	INTEGER := 60;
+		v_pixels	:	INTEGER := 350;
+		v_fp	 	:	INTEGER := 37;
+		v_pol		:	STD_LOGIC := '1');
+		
+		PORT(
+		pixel_clk	:	IN		STD_LOGIC;
+		data        :  IN    data_array;
+		h_sync		:	OUT	STD_LOGIC;
+		v_sync		:	OUT	STD_LOGIC;
+		red : out  STD_LOGIC_VECTOR (4 downto 0);
+      green : out  STD_LOGIC_VECTOR (5 downto 0);
+      blue : out  STD_LOGIC_VECTOR (4 downto 0));
+	end component;
 
+--type data_array is array(0 to 71) of integer;
+signal digits_array: data_array;
+signal DataOut_timer, DataOut1, DataOut2, DataOut3, DataOut4, DataOut5, DataOut6, DataOut7, DataOut8 : STD_LOGIC_VECTOR (31 downto 0);
 
 begin
 
@@ -169,6 +202,6 @@ variable DataIn : std_logic_vector(31 downto 0);
 	
 g1 : timer_memory port map (CLK, start_button, stop_button, RST, save_button, DataOut_timer, DataOut1, DataOut2,
 		DataOut3, DataOut4, DataOut5, DataOut6, DataOut7, DataOut8);
+g2 : vga_controller port map(CLK, digits_array, h_sync, v_sync, red, green, blue);
 
 end Behavioral;
-

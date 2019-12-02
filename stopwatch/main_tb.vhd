@@ -46,8 +46,8 @@ ARCHITECTURE behavior OF main_tb IS
          start_button : IN  std_logic;
          stop_button : IN  std_logic;
          save_button : IN  std_logic;
-         hsync : OUT  std_logic;
-         vsync : OUT  std_logic;
+         h_sync : OUT  std_logic;
+         v_sync : OUT  std_logic;
          red : OUT  std_logic_vector(4 downto 0);
          green : OUT  std_logic_vector(5 downto 0);
          blue : OUT  std_logic_vector(4 downto 0)
@@ -63,8 +63,8 @@ ARCHITECTURE behavior OF main_tb IS
    signal save_button : std_logic := '0';
 
  	--Outputs
-   signal hsync : std_logic;
-   signal vsync : std_logic;
+   signal h_sync : std_logic;
+   signal v_sync : std_logic;
    signal red : std_logic_vector(4 downto 0);
    signal green : std_logic_vector(5 downto 0);
    signal blue : std_logic_vector(4 downto 0);
@@ -82,8 +82,8 @@ BEGIN
           start_button => start_button,
           stop_button => stop_button,
           save_button => save_button,
-          hsync => hsync,
-          vsync => vsync,
+          h_sync => h_sync,
+          v_sync => v_sync,
           red => red,
           green => green,
           blue => blue
