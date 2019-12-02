@@ -41,14 +41,14 @@ use work.vga_controller_type.all;
 
 ENTITY vga_controller IS
 	GENERIC(
-		h_pulse 	:	INTEGER := 120;
-		h_bp	 	:	INTEGER := 64;
-		h_pixels	:	INTEGER := 800;
-		h_fp	 	:	INTEGER := 56;	
+		h_pulse 	:	INTEGER := 96;
+		h_bp	 	:	INTEGER := 48;
+		h_pixels	:	INTEGER := 640;
+		h_fp	 	:	INTEGER := 16;	
 		h_pol		:	STD_LOGIC := '0';
-		v_pulse 	:	INTEGER := 6;
-		v_bp	 	:	INTEGER := 23;
-		v_pixels	:	INTEGER := 600;
+		v_pulse 	:	INTEGER := 2;
+		v_bp	 	:	INTEGER := 60;
+		v_pixels	:	INTEGER := 350;
 		v_fp	 	:	INTEGER := 37;
 		v_pol		:	STD_LOGIC := '1');
 	PORT(
@@ -62,11 +62,24 @@ ENTITY vga_controller IS
 END vga_controller;
 
 ARCHITECTURE behavior OF vga_controller IS
+	signal clk25 : std_logic;
 	CONSTANT	h_period	:	INTEGER := h_pulse + h_bp + h_pixels + h_fp;
 	CONSTANT	v_period	:	INTEGER := v_pulse + v_bp + v_pixels + v_fp;
 BEGIN
 
-	PROCESS(pixel_clk)
+		process (pixel_clk)
+		begin
+			if (rising_edge(pixel_clk)) then
+				if (clk25 = '0') then              
+					clk25 <= '1';
+				else
+					clk25 <= '0';
+				end if;
+			end if;
+		end process;
+
+	PROCESS(clk25)
+	--PROCESS(pixel_clk)
 		VARIABLE h_count	:	INTEGER RANGE 0 TO h_period - 1 := 0;
 		VARIABLE v_count	:	INTEGER RANGE 0 TO v_period - 1 := 0;
 		variable h_min : integer := 0; --for square
@@ -89,7 +102,7 @@ BEGIN
 		variable v_sq22 : integer := 0;
 	BEGIN
 	
-		IF(pixel_clk'EVENT AND pixel_clk = '1') THEN
+		IF(clk25'EVENT AND clk25 = '1') THEN
 			IF(h_count < h_period - 1) THEN
 				h_count := h_count + 1;
 			ELSE

@@ -56,14 +56,14 @@ architecture Behavioral of vga_test is
 	component vga_controller
 	
 		GENERIC(
-		h_pulse 	:	INTEGER := 120;
-		h_bp	 	:	INTEGER := 64;
-		h_pixels	:	INTEGER := 800;
-		h_fp	 	:	INTEGER := 56;	
+		h_pulse 	:	INTEGER := 96;
+		h_bp	 	:	INTEGER := 48;
+		h_pixels	:	INTEGER := 640;
+		h_fp	 	:	INTEGER := 16;	
 		h_pol		:	STD_LOGIC := '0';
-		v_pulse 	:	INTEGER := 6;
-		v_bp	 	:	INTEGER := 23;
-		v_pixels	:	INTEGER := 600;
+		v_pulse 	:	INTEGER := 2;
+		v_bp	 	:	INTEGER := 60;
+		v_pixels	:	INTEGER := 350;
 		v_fp	 	:	INTEGER := 37;
 		v_pol		:	STD_LOGIC := '1');
 		
