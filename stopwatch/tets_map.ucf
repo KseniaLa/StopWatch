@@ -1,7 +1,4 @@
-
-NET "pixel_clk" CLOCK_DEDICATED_ROUTE = FALSE;
-
-NET pixel_clk                       		    	LOC = T8 | IOSTANDARD = "LVCMOS33";        
+NET CLK                       		    	LOC = T8 | IOSTANDARD = "LVCMOS33";      
 
 NET h_sync	                        		LOC = M14 | IOSTANDARD = "LVCMOS33";       
 NET v_sync 	                      	        	LOC = L13 | IOSTANDARD = "LVCMOS33";
