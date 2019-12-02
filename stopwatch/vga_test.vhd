@@ -54,6 +54,19 @@ end vga_test;
 architecture Behavioral of vga_test is
 	
 	component vga_controller
+	
+		GENERIC(
+		h_pulse 	:	INTEGER := 120;
+		h_bp	 	:	INTEGER := 64;
+		h_pixels	:	INTEGER := 800;
+		h_fp	 	:	INTEGER := 56;	
+		h_pol		:	STD_LOGIC := '0';
+		v_pulse 	:	INTEGER := 6;
+		v_bp	 	:	INTEGER := 23;
+		v_pixels	:	INTEGER := 600;
+		v_fp	 	:	INTEGER := 37;
+		v_pol		:	STD_LOGIC := '1');
+		
 		PORT(
 		pixel_clk	:	IN		STD_LOGIC;
 		data        :  IN    data_array;
@@ -64,16 +77,22 @@ architecture Behavioral of vga_test is
       blue : out  STD_LOGIC_VECTOR (4 downto 0));
 	end component;
 	
-begin
-	process(CLK)
-	begin
-	
-	-- variable data : data_array := 0; --72 digits
-	
-	end process;
+	CONSTANT digits : data_array := (
+		1, 2, 3, 4, 5, 6, 7, 8,
+		2, 3, 4, 5, 6, 7, 8, 9,
+		3, 4, 5, 6, 7, 8, 9, 0,
+		4, 5, 6, 7, 8, 9, 0, 1,
+		5, 6, 7, 8, 9, 0, 1, 2,
+		6, 7, 8, 9, 0, 1, 2, 3,
+		7, 8, 9, 0, 1, 2, 3, 4,
+		8, 9, 0, 1, 2, 3, 4, 5,
+		9, 0, 1, 2, 3, 4, 5, 6);
 		
-	 --u1: 
-	 --u2:
-
+begin
+		 
+	 u1: vga_controller port map(pixel_clk => CLK, data => digits, 
+										  h_sync => h_sync, v_sync => v_sync, 
+										  red => red, green => green, blue => blue);
+	 
 end Behavioral;
 
