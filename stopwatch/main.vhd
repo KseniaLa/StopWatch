@@ -157,7 +157,7 @@ component vga_controller
 
 --type data_array is array(0 to 71) of integer;
 signal digits_array: data_array;
-signal DataOut_timer, DataOut1, DataOut2, DataOut3, DataOut4, DataOut5, DataOut6, DataOut7, DataOut8 : STD_LOGIC_VECTOR (31 downto 0);
+signal DataOut_timer, DataOut1, DataOut2, DataOut3, DataOut4, DataOut5, DataOut6, DataOut7, DataOut8 : STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 
 begin
 

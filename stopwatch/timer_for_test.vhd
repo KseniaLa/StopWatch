@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    00:31:01 11/30/2019 
+-- Create Date:    08:46:01 12/04/2019 
 -- Design Name: 
--- Module Name:    timer - Behavioral 
+-- Module Name:    timer_for_test - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -31,11 +31,8 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity timer is
+entity timer_for_test is
 Port (
-			start_button : in  STD_LOGIC;
-			stop_button : in STD_LOGIC;
-			RST : in  STD_LOGIC;
 			CLK : in STD_LOGIC;
 			h2_out : out integer;
 			h1_out: out integer;
@@ -45,54 +42,25 @@ Port (
 			s1_out : out integer;
 			ms2_out : out integer;
 			ms1_out : out integer);
-end timer;
+end timer_for_test;
 
-architecture Behavioral of timer is
+architecture Behavioral of timer_for_test is
 
 signal ClockFrequencyHz : integer := 500000;
 signal Ticks : integer := 0;
 signal count2 : std_logic_vector (16 downto 0):="00000000000000000";
 signal h1, h2, m1, m2, s1, s2, ms1, ms2 : integer:=0;
-signal en : STD_LOGIC := '0';
 
 begin
 
-process(CLK, start_button, stop_button) is
+process(CLK) is
     begin
         if rising_edge(CLK) then
 		  
---				if start_button = '1' then
---					en <= '1';
---				end if;
-
-				if start_button = '1' then
-					en <= '1';
-				else
-					en <= '0';
-				end if;
-				
---				if stop_button = '1' then
---					en <= '0';
---				end if;
- 
-            -- If the negative reset signal is active
-            if RST = '1' then
-                Ticks   <= 0;
-                h1 <= 0;
-					h2 <= 0;
-					m1 <= 0;
-					m2 <= 0;
-					s1 <= 0;
-					s2 <= 0;
-					ms1 <= 0;
-					ms2 <= 0;
-            else
- 
                 -- True once every second
                 if Ticks = ClockFrequencyHz - 1 then
                     Ticks <= 0;
  
-						  if en = '1' then
                     -- True once every minute
 						   ms1 <= ms1 + 1;
 							if ms1 = 9 then
@@ -133,13 +101,9 @@ process(CLK, start_button, stop_button) is
 									end if;
 								end if;
 							end if;
-							end if;
- 
-                else
+						else
                     Ticks <= Ticks + 1;
-                end if;
- 
-            end if;
+						end if;	
         end if;
     end process;
 

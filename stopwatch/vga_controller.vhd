@@ -21,9 +21,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.std_logic_unsigned.all;
 
-package vga_controller_type is
-        type data_array is array(0 to 71) of integer;
-end package;
+--package vga_controller_type is
+--        type data_array is array(0 to 71) of integer;
+--end package;
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

@@ -148,21 +148,22 @@ begin
 	
 process(CLK)
 	begin
-	
-	if(save_button = '1' and pushed = '0') then
-		pushed <= '1';
-		WriteEnable <= '1';
-		ReadEnable <= '0';
-	else
-		if(save_button = '0') then
-			pushed <= '0';
+	if(rising_edge(CLK)) then
+		if(save_button = '1' and pushed = '0') then
+			pushed <= '1';
+			WriteEnable <= '1';
+			ReadEnable <= '0';
 		else
-			WriteEnable <= '0';
-			ReadEnable <= '1';
+			if(save_button = '0') then
+				pushed <= '0';
+			else
+				WriteEnable <= '0';
+				ReadEnable <= '1';
+			end if;
 		end if;
-	end if;
 
-	DataIn <= get_vect_for_memory(h2, h1, m2, m1, s2, s1, ms2, ms1);
+		DataIn <= get_vect_for_memory(h2, h1, m2, m1, s2, s1, ms2, ms1);
+	end if;
 	end process;
 	
 clk1 : process (CLK) 

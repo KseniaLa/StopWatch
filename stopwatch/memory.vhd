@@ -59,6 +59,7 @@ type FIFO_Memory is array (0 to FIFO_DEPTH - 1) of STD_LOGIC_VECTOR (DATA_WIDTH 
 begin
 	fifo_proc : process (WriteEn, RST)
 			begin
+			if(rising_edge(CLK)) then
 				if RST = '1' then
 					WritePtr <= 0;
 					DataOut1 <= "00000000000000000000000000000000";
@@ -89,6 +90,7 @@ begin
 						Memory(WritePtr) <= DataIn;
 					end if;
 				end if;
+			end if;
 	end process;
 end Behavioral;
 
